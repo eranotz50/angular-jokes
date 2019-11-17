@@ -1,6 +1,41 @@
+//import angular from 'angular'
+
 var app = angular.module('jokes', ['ui.router']);
+app.constant('icndbUrl','http://www.icndb.com/api/');
+
+var _$stateProvider = null;
 
 app.config(function($stateProvider) {
+  _$stateProvider = $stateProvider; 
+
+  console.log('config...');
+
+});
+
+/*
+.run(['$rootScope', '$state', 'authService', function ($rootScope, $state, authService) {
+
+
+*/
+
+app.run(['icnbdClient',function(icnbdClient){
+  console.log('run...');
+
+  var c = icnbdClient.getCategories();
+
+}]);
+
+/*app.run(['icndbClient',function(icndbClient){
+
+      var categories = icndbClient.getCategories();
+
+}]);*/
+  
+
+
+
+/*
+
     var helloState = {
       name: 'hello',
       url: '/hello',
@@ -15,4 +50,8 @@ app.config(function($stateProvider) {
   
     $stateProvider.state(helloState);
     $stateProvider.state(aboutState);
-  });
+
+
+*/
+ 
+
