@@ -7,22 +7,21 @@
 
 
 
-function getCategories(){
-    return ['Stam' , 'Chuck' , 'KnockKnock']
-}
 /* icndbUrl */ 
 angular
     .module("jokes")
-    .factory('icnbdClient',function(icndbUrl){
+    .factory('icnbdClient',['icndbUrl','$http',function(icndbUrl,$http){
 
         console.log('client factory -> ' + icndbUrl);
-
+        
     return {
 
-        getCategories : getCategories
+        getCategories : function(){
+            return  $http.get(icndbUrl + 'categories');
+        }
 
     }
 
-})
+}])
 
 

@@ -1,7 +1,7 @@
 //import angular from 'angular'
 
 var app = angular.module('jokes', ['ui.router']);
-app.constant('icndbUrl','http://www.icndb.com/api/');
+app.constant('icndbUrl','http://api.icndb.com/');
 
 var _$stateProvider = null;
 
@@ -21,7 +21,13 @@ app.config(function($stateProvider) {
 app.run(['icnbdClient',function(icnbdClient){
   console.log('run...');
 
-  var c = icnbdClient.getCategories();
+        icnbdClient.getCategories()
+            .then(function(res){
+
+             })
+             .catch(function(err){
+
+             });
 
 }]);
 
