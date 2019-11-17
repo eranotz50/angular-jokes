@@ -17,7 +17,21 @@ angular
     return {
 
         getCategories : function(){
-            return  $http.get(icndbUrl + 'categories');
+            return new Promise(function(resolve,reject){
+                $http.get(icndbUrl + 'categories')
+                    .then(function(response){
+
+                        if(response.status !== 200){
+                            reject('Error getting resource -> ' + icndbUrl + 'categories');
+                        }
+                        else{
+                            resolve(response.data.value);    
+                        }
+                    })
+                    .catch(function(err){
+                        reject('Error from -> '  + icndbUrl + 'categories \n'  + JSON.stringify(err))
+                    })
+            }) 
         }
 
     }
