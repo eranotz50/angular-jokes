@@ -1,9 +1,13 @@
 //import angular from 'angular'
 
+
 var app = angular.module('jokes', ['ui.router']);
 app.constant('icndbUrl','http://api.icndb.com/'); //''
 
-var _$stateProvider = null;
+
+
+
+/*var _$stateProvider = null;
 
 app.config(function($stateProvider) {
   _$stateProvider = $stateProvider; 
@@ -33,14 +37,9 @@ app.run(['icnbdClient',function(icnbdClient){
                 console.log('ERROR Getting Categories -> ' + err);
              });
 
-}]);
-
-/*app.run(['icndbClient',function(icndbClient){
-
-      var categories = icndbClient.getCategories();
-
 }]);*/
-  
+
+
 
 
 

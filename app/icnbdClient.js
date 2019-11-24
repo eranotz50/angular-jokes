@@ -17,21 +17,44 @@ angular
     return {
 
         getCategories : function(){
+            var url = String.format('{0}categories',icndbUrl);    
+
             return new Promise(function(resolve,reject){
-                $http.get(icndbUrl + 'categories')
+                $http.get(url)
                     .then(function(response){
 
                         if(response.status !== 200){
-                            reject('Error getting resource -> ' + icndbUrl + 'categories');
+                            reject('Error getting resource -> ' + url);
                         }
                         else{
                             resolve(response.data.value);    
                         }
                     })
                     .catch(function(err){
-                        reject('Error from -> '  + icndbUrl + 'categories \n'  + JSON.stringify(err))
+                        reject('Error from -> '  + url + '\n'  + JSON.stringify(err))
                     })
             }) 
+        },
+        getJokes : function(category){
+
+            return new Promise(function(resolve,reject){
+                var url = String.format('{0}jokes/random/10?limitTo=[{1}]',icndbUrl,category);
+
+                $http.get(url)
+                    .then(function(response){
+
+                        if(response.status !== 200){
+                            reject('Error getting resource -> ' + url);
+                        }
+                        else{
+                            resolve(response.data.value);    
+                        }
+                    })
+                    .catch(function(err){
+                        reject('Error from -> ' + url + ' \n'  + JSON.stringify(err))
+                    })
+            }) 
+
         }
 
     }
