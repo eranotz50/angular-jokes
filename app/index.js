@@ -17,9 +17,9 @@ app.run(['icnbdClient',function(icnbdClient){
   console.log('run...');
 
         icnbdClient.getCategories()
-            .then(function(res){
+            .then(function(categories){
 
-                angular.forEach(res.value,category => {
+                angular.forEach(categories,category => {
                   var state = {
                     "name" : category,
                     "url": "/" + category,
